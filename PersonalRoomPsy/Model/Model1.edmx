@@ -1,0 +1,1162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище personalRoomPsyModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="idCity" />
+          </Key>
+          <Property Name="idCity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFromCountry" Type="int" Nullable="false" />
+          <Property Name="nameCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contacts">
+          <Key>
+            <PropertyRef Name="idContact" />
+          </Key>
+          <Property Name="idContact" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUserContact" Type="int" Nullable="false" />
+          <Property Name="nameContact" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="phoneContact" Type="varchar" MaxLength="11" />
+          <Property Name="emailContact" Type="varchar" MaxLength="50" />
+          <Property Name="informationContact" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="idCountry" />
+          </Key>
+          <Property Name="idCountry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="fileID" />
+          </Key>
+          <Property Name="fileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="path" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="folderIDFile" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="folder">
+          <Key>
+            <PropertyRef Name="folderID" />
+          </Key>
+          <Property Name="folderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="historyOrder">
+          <Key>
+            <PropertyRef Name="idOldOrder" />
+          </Key>
+          <Property Name="idOldOrder" Type="int" Nullable="false" />
+          <Property Name="idWorker" Type="int" Nullable="false" />
+          <Property Name="FioClient" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="dateCompete" Type="date" Nullable="false" />
+          <Property Name="commentClient" Type="nvarchar" MaxLength="250" />
+          <Property Name="rateWorker" Type="int" />
+          <Property Name="statusOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lineProblem">
+          <Key>
+            <PropertyRef Name="idLineProblem" />
+          </Key>
+          <Property Name="idLineProblem" Type="int" Nullable="false" />
+          <Property Name="nameLineProblem" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="messageProblem">
+          <Key>
+            <PropertyRef Name="idProblem" />
+          </Key>
+          <Property Name="idProblem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="commentProblem" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="idOrder" />
+          </Key>
+          <Property Name="idOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FioClient" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="dateMaking" Type="date" Nullable="false" />
+          <Property Name="dateStart" Type="date" Nullable="false" />
+          <Property Name="timeStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="idProblemOrder" Type="int" Nullable="false" />
+          <Property Name="idLineProblemOrder" Type="int" Nullable="false" />
+          <Property Name="idWorker" Type="int" Nullable="false" />
+          <Property Name="statusOrder" Type="int" Nullable="false" />
+          <Property Name="infoFromUserOrder" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="idRole" />
+          </Key>
+          <Property Name="idRole" Type="int" Nullable="false" />
+          <Property Name="nameRole" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="statusOrder">
+          <Key>
+            <PropertyRef Name="idStatusOrder" />
+          </Key>
+          <Property Name="idStatusOrder" Type="int" Nullable="false" />
+          <Property Name="nameStatusOrder" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="storage">
+          <Key>
+            <PropertyRef Name="idStorage" />
+          </Key>
+          <Property Name="idStorage" Type="int" Nullable="false" />
+          <Property Name="idUserStorage" Type="int" Nullable="false" />
+          <Property Name="sizeStorage" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="typeProblem">
+          <Key>
+            <PropertyRef Name="idTypeProblem" />
+          </Key>
+          <Property Name="idTypeProblem" Type="int" Nullable="false" />
+          <Property Name="idLineProblem" Type="int" Nullable="false" />
+          <Property Name="nameTypeProblem" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="loginUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="passwordUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fullNameUser" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="dateBirth" Type="date" Nullable="false" />
+          <Property Name="emailUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="phoneUser" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="idRoleUser" Type="int" Nullable="false" />
+          <Property Name="countryUser" Type="int" Nullable="false" />
+          <Property Name="cityUser" Type="int" Nullable="false" />
+          <Property Name="sexUser" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="urlPhoto" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="verificationUser" Type="int" />
+          <Property Name="lineWorking" Type="int" />
+        </EntityType>
+        <EntityType Name="verification">
+          <Key>
+            <PropertyRef Name="idVerification" />
+          </Key>
+          <Property Name="idVerification" Type="int" Nullable="false" />
+          <Property Name="nameVerification" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_city_country">
+          <End Role="country" Type="Self.country" Multiplicity="1" />
+          <End Role="city" Type="Self.city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country">
+              <PropertyRef Name="idCountry" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="idFromCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contacts_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="contacts" Type="Self.contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="contacts">
+              <PropertyRef Name="idUserContact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_file_folder">
+          <End Role="folder" Type="Self.folder" Multiplicity="1" />
+          <End Role="file" Type="Self.file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="folder">
+              <PropertyRef Name="folderID" />
+            </Principal>
+            <Dependent Role="file">
+              <PropertyRef Name="folderIDFile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_folder_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="folder" Type="Self.folder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="folder">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historyOrder_statusOrder">
+          <End Role="statusOrder" Type="Self.statusOrder" Multiplicity="1" />
+          <End Role="historyOrder" Type="Self.historyOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusOrder">
+              <PropertyRef Name="idStatusOrder" />
+            </Principal>
+            <Dependent Role="historyOrder">
+              <PropertyRef Name="statusOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historyOrder_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="historyOrder" Type="Self.historyOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="historyOrder">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messageProblem_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="messageProblem" Type="Self.messageProblem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="messageProblem">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_lineProblem">
+          <End Role="lineProblem" Type="Self.lineProblem" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lineProblem">
+              <PropertyRef Name="idLineProblem" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="idLineProblemOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_statusOrder">
+          <End Role="statusOrder" Type="Self.statusOrder" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusOrder">
+              <PropertyRef Name="idStatusOrder" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="statusOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_typeProblem">
+          <End Role="typeProblem" Type="Self.typeProblem" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="typeProblem">
+              <PropertyRef Name="idTypeProblem" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="idProblemOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storage_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="idUserStorage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_typeProblem_lineProblem">
+          <End Role="lineProblem" Type="Self.lineProblem" Multiplicity="1" />
+          <End Role="typeProblem" Type="Self.typeProblem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lineProblem">
+              <PropertyRef Name="idLineProblem" />
+            </Principal>
+            <Dependent Role="typeProblem">
+              <PropertyRef Name="idLineProblem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_city">
+          <End Role="city" Type="Self.city" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="idCity" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="cityUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_country">
+          <End Role="country" Type="Self.country" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country">
+              <PropertyRef Name="idCountry" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="countryUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_lineProblem">
+          <End Role="lineProblem" Type="Self.lineProblem" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lineProblem">
+              <PropertyRef Name="idLineProblem" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="lineWorking" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_role">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="idRole" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="idRoleUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_verification">
+          <End Role="verification" Type="Self.verification" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="verification">
+              <PropertyRef Name="idVerification" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="verificationUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище personalRoomPsyModelContainer">
+          <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contacts" EntityType="Self.contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="country" EntityType="Self.country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="file" EntityType="Self.file" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="folder" EntityType="Self.folder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="historyOrder" EntityType="Self.historyOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lineProblem" EntityType="Self.lineProblem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="messageProblem" EntityType="Self.messageProblem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statusOrder" EntityType="Self.statusOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="storage" EntityType="Self.storage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="typeProblem" EntityType="Self.typeProblem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="verification" EntityType="Self.verification" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_city_country" Association="Self.FK_city_country">
+            <End Role="country" EntitySet="country" />
+            <End Role="city" EntitySet="city" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contacts_user" Association="Self.FK_contacts_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="contacts" EntitySet="contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_file_folder" Association="Self.FK_file_folder">
+            <End Role="folder" EntitySet="folder" />
+            <End Role="file" EntitySet="file" />
+          </AssociationSet>
+          <AssociationSet Name="FK_folder_user" Association="Self.FK_folder_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="folder" EntitySet="folder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historyOrder_statusOrder" Association="Self.FK_historyOrder_statusOrder">
+            <End Role="statusOrder" EntitySet="statusOrder" />
+            <End Role="historyOrder" EntitySet="historyOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historyOrder_user" Association="Self.FK_historyOrder_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="historyOrder" EntitySet="historyOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messageProblem_user" Association="Self.FK_messageProblem_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="messageProblem" EntitySet="messageProblem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_lineProblem" Association="Self.FK_order_lineProblem">
+            <End Role="lineProblem" EntitySet="lineProblem" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_statusOrder" Association="Self.FK_order_statusOrder">
+            <End Role="statusOrder" EntitySet="statusOrder" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_typeProblem" Association="Self.FK_order_typeProblem">
+            <End Role="typeProblem" EntitySet="typeProblem" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_user" Association="Self.FK_order_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storage_user" Association="Self.FK_storage_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="storage" EntitySet="storage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_typeProblem_lineProblem" Association="Self.FK_typeProblem_lineProblem">
+            <End Role="lineProblem" EntitySet="lineProblem" />
+            <End Role="typeProblem" EntitySet="typeProblem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_city" Association="Self.FK_user_city">
+            <End Role="city" EntitySet="city" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_country" Association="Self.FK_user_country">
+            <End Role="country" EntitySet="country" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_lineProblem" Association="Self.FK_user_lineProblem">
+            <End Role="lineProblem" EntitySet="lineProblem" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_role" Association="Self.FK_user_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_verification" Association="Self.FK_user_verification">
+            <End Role="verification" EntitySet="verification" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="personalRoomPsyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="idCity" />
+          </Key>
+          <Property Name="idCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFromCountry" Type="Int32" Nullable="false" />
+          <Property Name="nameCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="country" Relationship="Self.FK_city_country" FromRole="city" ToRole="country" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_city" FromRole="city" ToRole="user" />
+        </EntityType>
+        <EntityType Name="contacts">
+          <Key>
+            <PropertyRef Name="idContact" />
+          </Key>
+          <Property Name="idContact" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUserContact" Type="Int32" Nullable="false" />
+          <Property Name="nameContact" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phoneContact" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="emailContact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="informationContact" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK_contacts_user" FromRole="contacts" ToRole="user" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="idCountry" />
+          </Key>
+          <Property Name="idCountry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="city" Relationship="Self.FK_city_country" FromRole="country" ToRole="city" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_country" FromRole="country" ToRole="user" />
+        </EntityType>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="fileID" />
+          </Key>
+          <Property Name="fileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="folderIDFile" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="folder" Relationship="Self.FK_file_folder" FromRole="file" ToRole="folder" />
+        </EntityType>
+        <EntityType Name="folder">
+          <Key>
+            <PropertyRef Name="folderID" />
+          </Key>
+          <Property Name="folderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="file" Relationship="Self.FK_file_folder" FromRole="folder" ToRole="file" />
+          <NavigationProperty Name="user" Relationship="Self.FK_folder_user" FromRole="folder" ToRole="user" />
+        </EntityType>
+        <EntityType Name="historyOrder">
+          <Key>
+            <PropertyRef Name="idOldOrder" />
+          </Key>
+          <Property Name="idOldOrder" Type="Int32" Nullable="false" />
+          <Property Name="idWorker" Type="Int32" Nullable="false" />
+          <Property Name="FioClient" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateCompete" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="commentClient" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="rateWorker" Type="Int32" />
+          <Property Name="statusOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="statusOrder1" Relationship="Self.FK_historyOrder_statusOrder" FromRole="historyOrder" ToRole="statusOrder" />
+          <NavigationProperty Name="user" Relationship="Self.FK_historyOrder_user" FromRole="historyOrder" ToRole="user" />
+        </EntityType>
+        <EntityType Name="lineProblem">
+          <Key>
+            <PropertyRef Name="idLineProblem" />
+          </Key>
+          <Property Name="idLineProblem" Type="Int32" Nullable="false" />
+          <Property Name="nameLineProblem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_lineProblem" FromRole="lineProblem" ToRole="order" />
+          <NavigationProperty Name="typeProblem" Relationship="Self.FK_typeProblem_lineProblem" FromRole="lineProblem" ToRole="typeProblem" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_lineProblem" FromRole="lineProblem" ToRole="user" />
+        </EntityType>
+        <EntityType Name="messageProblem">
+          <Key>
+            <PropertyRef Name="idProblem" />
+          </Key>
+          <Property Name="idProblem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="commentProblem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_messageProblem_user" FromRole="messageProblem" ToRole="user" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="idOrder" />
+          </Key>
+          <Property Name="idOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FioClient" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateMaking" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dateStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="timeStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="idProblemOrder" Type="Int32" Nullable="false" />
+          <Property Name="idLineProblemOrder" Type="Int32" Nullable="false" />
+          <Property Name="idWorker" Type="Int32" Nullable="false" />
+          <Property Name="statusOrder" Type="Int32" Nullable="false" />
+          <Property Name="infoFromUserOrder" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="lineProblem" Relationship="Self.FK_order_lineProblem" FromRole="order" ToRole="lineProblem" />
+          <NavigationProperty Name="statusOrder1" Relationship="Self.FK_order_statusOrder" FromRole="order" ToRole="statusOrder" />
+          <NavigationProperty Name="typeProblem" Relationship="Self.FK_order_typeProblem" FromRole="order" ToRole="typeProblem" />
+          <NavigationProperty Name="user" Relationship="Self.FK_order_user" FromRole="order" ToRole="user" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="idRole" />
+          </Key>
+          <Property Name="idRole" Type="Int32" Nullable="false" />
+          <Property Name="nameRole" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_role" FromRole="role" ToRole="user" />
+        </EntityType>
+        <EntityType Name="statusOrder">
+          <Key>
+            <PropertyRef Name="idStatusOrder" />
+          </Key>
+          <Property Name="idStatusOrder" Type="Int32" Nullable="false" />
+          <Property Name="nameStatusOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="historyOrder" Relationship="Self.FK_historyOrder_statusOrder" FromRole="statusOrder" ToRole="historyOrder" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_statusOrder" FromRole="statusOrder" ToRole="order" />
+        </EntityType>
+        <EntityType Name="storage">
+          <Key>
+            <PropertyRef Name="idStorage" />
+          </Key>
+          <Property Name="idStorage" Type="Int32" Nullable="false" />
+          <Property Name="idUserStorage" Type="Int32" Nullable="false" />
+          <Property Name="sizeStorage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_storage_user" FromRole="storage" ToRole="user" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="typeProblem">
+          <Key>
+            <PropertyRef Name="idTypeProblem" />
+          </Key>
+          <Property Name="idTypeProblem" Type="Int32" Nullable="false" />
+          <Property Name="idLineProblem" Type="Int32" Nullable="false" />
+          <Property Name="nameTypeProblem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="lineProblem" Relationship="Self.FK_typeProblem_lineProblem" FromRole="typeProblem" ToRole="lineProblem" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_typeProblem" FromRole="typeProblem" ToRole="order" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loginUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passwordUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fullNameUser" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="emailUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phoneUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idRoleUser" Type="Int32" Nullable="false" />
+          <Property Name="countryUser" Type="Int32" Nullable="false" />
+          <Property Name="cityUser" Type="Int32" Nullable="false" />
+          <Property Name="sexUser" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="urlPhoto" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="verificationUser" Type="Int32" />
+          <Property Name="lineWorking" Type="Int32" />
+          <NavigationProperty Name="city" Relationship="Self.FK_user_city" FromRole="user" ToRole="city" />
+          <NavigationProperty Name="contacts" Relationship="Self.FK_contacts_user" FromRole="user" ToRole="contacts" />
+          <NavigationProperty Name="country" Relationship="Self.FK_user_country" FromRole="user" ToRole="country" />
+          <NavigationProperty Name="folder" Relationship="Self.FK_folder_user" FromRole="user" ToRole="folder" />
+          <NavigationProperty Name="historyOrder" Relationship="Self.FK_historyOrder_user" FromRole="user" ToRole="historyOrder" />
+          <NavigationProperty Name="lineProblem" Relationship="Self.FK_user_lineProblem" FromRole="user" ToRole="lineProblem" />
+          <NavigationProperty Name="messageProblem" Relationship="Self.FK_messageProblem_user" FromRole="user" ToRole="messageProblem" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_user" FromRole="user" ToRole="order" />
+          <NavigationProperty Name="role" Relationship="Self.FK_user_role" FromRole="user" ToRole="role" />
+          <NavigationProperty Name="storage" Relationship="Self.FK_storage_user" FromRole="user" ToRole="storage" />
+          <NavigationProperty Name="verification" Relationship="Self.FK_user_verification" FromRole="user" ToRole="verification" />
+        </EntityType>
+        <EntityType Name="verification">
+          <Key>
+            <PropertyRef Name="idVerification" />
+          </Key>
+          <Property Name="idVerification" Type="Int32" Nullable="false" />
+          <Property Name="nameVerification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_verification" FromRole="verification" ToRole="user" />
+        </EntityType>
+        <Association Name="FK_city_country">
+          <End Role="country" Type="Self.country" Multiplicity="1" />
+          <End Role="city" Type="Self.city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country">
+              <PropertyRef Name="idCountry" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="idFromCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_city">
+          <End Role="city" Type="Self.city" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="idCity" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="cityUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contacts_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="contacts" Type="Self.contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="contacts">
+              <PropertyRef Name="idUserContact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_country">
+          <End Role="country" Type="Self.country" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country">
+              <PropertyRef Name="idCountry" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="countryUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_file_folder">
+          <End Role="folder" Type="Self.folder" Multiplicity="1" />
+          <End Role="file" Type="Self.file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="folder">
+              <PropertyRef Name="folderID" />
+            </Principal>
+            <Dependent Role="file">
+              <PropertyRef Name="folderIDFile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_folder_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="folder" Type="Self.folder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="folder">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historyOrder_statusOrder">
+          <End Role="statusOrder" Type="Self.statusOrder" Multiplicity="1" />
+          <End Role="historyOrder" Type="Self.historyOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusOrder">
+              <PropertyRef Name="idStatusOrder" />
+            </Principal>
+            <Dependent Role="historyOrder">
+              <PropertyRef Name="statusOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historyOrder_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="historyOrder" Type="Self.historyOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="historyOrder">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_lineProblem">
+          <End Role="lineProblem" Type="Self.lineProblem" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lineProblem">
+              <PropertyRef Name="idLineProblem" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="idLineProblemOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_typeProblem_lineProblem">
+          <End Role="lineProblem" Type="Self.lineProblem" Multiplicity="1" />
+          <End Role="typeProblem" Type="Self.typeProblem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lineProblem">
+              <PropertyRef Name="idLineProblem" />
+            </Principal>
+            <Dependent Role="typeProblem">
+              <PropertyRef Name="idLineProblem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_lineProblem">
+          <End Role="lineProblem" Type="Self.lineProblem" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lineProblem">
+              <PropertyRef Name="idLineProblem" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="lineWorking" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messageProblem_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="messageProblem" Type="Self.messageProblem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="messageProblem">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_statusOrder">
+          <End Role="statusOrder" Type="Self.statusOrder" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusOrder">
+              <PropertyRef Name="idStatusOrder" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="statusOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_typeProblem">
+          <End Role="typeProblem" Type="Self.typeProblem" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="typeProblem">
+              <PropertyRef Name="idTypeProblem" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="idProblemOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_role">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="idRole" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="idRoleUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storage_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="idUserStorage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_verification">
+          <End Role="verification" Type="Self.verification" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="verification">
+              <PropertyRef Name="idVerification" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="verificationUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="personalRoomPsyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="city" EntityType="Self.city" />
+          <EntitySet Name="contacts" EntityType="Self.contacts" />
+          <EntitySet Name="country" EntityType="Self.country" />
+          <EntitySet Name="file" EntityType="Self.file" />
+          <EntitySet Name="folder" EntityType="Self.folder" />
+          <EntitySet Name="historyOrder" EntityType="Self.historyOrder" />
+          <EntitySet Name="lineProblem" EntityType="Self.lineProblem" />
+          <EntitySet Name="messageProblem" EntityType="Self.messageProblem" />
+          <EntitySet Name="order" EntityType="Self.order" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="statusOrder" EntityType="Self.statusOrder" />
+          <EntitySet Name="storage" EntityType="Self.storage" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="typeProblem" EntityType="Self.typeProblem" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="verification" EntityType="Self.verification" />
+          <AssociationSet Name="FK_city_country" Association="Self.FK_city_country">
+            <End Role="country" EntitySet="country" />
+            <End Role="city" EntitySet="city" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_city" Association="Self.FK_user_city">
+            <End Role="city" EntitySet="city" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contacts_user" Association="Self.FK_contacts_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="contacts" EntitySet="contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_country" Association="Self.FK_user_country">
+            <End Role="country" EntitySet="country" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_file_folder" Association="Self.FK_file_folder">
+            <End Role="folder" EntitySet="folder" />
+            <End Role="file" EntitySet="file" />
+          </AssociationSet>
+          <AssociationSet Name="FK_folder_user" Association="Self.FK_folder_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="folder" EntitySet="folder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historyOrder_statusOrder" Association="Self.FK_historyOrder_statusOrder">
+            <End Role="statusOrder" EntitySet="statusOrder" />
+            <End Role="historyOrder" EntitySet="historyOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historyOrder_user" Association="Self.FK_historyOrder_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="historyOrder" EntitySet="historyOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_lineProblem" Association="Self.FK_order_lineProblem">
+            <End Role="lineProblem" EntitySet="lineProblem" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_typeProblem_lineProblem" Association="Self.FK_typeProblem_lineProblem">
+            <End Role="lineProblem" EntitySet="lineProblem" />
+            <End Role="typeProblem" EntitySet="typeProblem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_lineProblem" Association="Self.FK_user_lineProblem">
+            <End Role="lineProblem" EntitySet="lineProblem" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messageProblem_user" Association="Self.FK_messageProblem_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="messageProblem" EntitySet="messageProblem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_statusOrder" Association="Self.FK_order_statusOrder">
+            <End Role="statusOrder" EntitySet="statusOrder" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_typeProblem" Association="Self.FK_order_typeProblem">
+            <End Role="typeProblem" EntitySet="typeProblem" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_user" Association="Self.FK_order_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_role" Association="Self.FK_user_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storage_user" Association="Self.FK_storage_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="storage" EntitySet="storage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_verification" Association="Self.FK_user_verification">
+            <End Role="verification" EntitySet="verification" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище personalRoomPsyModelContainer" CdmEntityContainer="personalRoomPsyEntities">
+          <EntitySetMapping Name="city">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="idCity" ColumnName="idCity" />
+                <ScalarProperty Name="idFromCountry" ColumnName="idFromCountry" />
+                <ScalarProperty Name="nameCity" ColumnName="nameCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contacts">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.contacts">
+              <MappingFragment StoreEntitySet="contacts">
+                <ScalarProperty Name="idContact" ColumnName="idContact" />
+                <ScalarProperty Name="idUserContact" ColumnName="idUserContact" />
+                <ScalarProperty Name="nameContact" ColumnName="nameContact" />
+                <ScalarProperty Name="phoneContact" ColumnName="phoneContact" />
+                <ScalarProperty Name="emailContact" ColumnName="emailContact" />
+                <ScalarProperty Name="informationContact" ColumnName="informationContact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="country">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.country">
+              <MappingFragment StoreEntitySet="country">
+                <ScalarProperty Name="idCountry" ColumnName="idCountry" />
+                <ScalarProperty Name="nameCountry" ColumnName="nameCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="file">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.file">
+              <MappingFragment StoreEntitySet="file">
+                <ScalarProperty Name="fileID" ColumnName="fileID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="folderIDFile" ColumnName="folderIDFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="folder">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.folder">
+              <MappingFragment StoreEntitySet="folder">
+                <ScalarProperty Name="folderID" ColumnName="folderID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="historyOrder">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.historyOrder">
+              <MappingFragment StoreEntitySet="historyOrder">
+                <ScalarProperty Name="idOldOrder" ColumnName="idOldOrder" />
+                <ScalarProperty Name="idWorker" ColumnName="idWorker" />
+                <ScalarProperty Name="FioClient" ColumnName="FioClient" />
+                <ScalarProperty Name="dateCompete" ColumnName="dateCompete" />
+                <ScalarProperty Name="commentClient" ColumnName="commentClient" />
+                <ScalarProperty Name="rateWorker" ColumnName="rateWorker" />
+                <ScalarProperty Name="statusOrder" ColumnName="statusOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lineProblem">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.lineProblem">
+              <MappingFragment StoreEntitySet="lineProblem">
+                <ScalarProperty Name="idLineProblem" ColumnName="idLineProblem" />
+                <ScalarProperty Name="nameLineProblem" ColumnName="nameLineProblem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messageProblem">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.messageProblem">
+              <MappingFragment StoreEntitySet="messageProblem">
+                <ScalarProperty Name="idProblem" ColumnName="idProblem" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="commentProblem" ColumnName="commentProblem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+                <ScalarProperty Name="FioClient" ColumnName="FioClient" />
+                <ScalarProperty Name="dateMaking" ColumnName="dateMaking" />
+                <ScalarProperty Name="dateStart" ColumnName="dateStart" />
+                <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+                <ScalarProperty Name="idProblemOrder" ColumnName="idProblemOrder" />
+                <ScalarProperty Name="idLineProblemOrder" ColumnName="idLineProblemOrder" />
+                <ScalarProperty Name="idWorker" ColumnName="idWorker" />
+                <ScalarProperty Name="statusOrder" ColumnName="statusOrder" />
+                <ScalarProperty Name="infoFromUserOrder" ColumnName="infoFromUserOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="idRole" ColumnName="idRole" />
+                <ScalarProperty Name="nameRole" ColumnName="nameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statusOrder">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.statusOrder">
+              <MappingFragment StoreEntitySet="statusOrder">
+                <ScalarProperty Name="idStatusOrder" ColumnName="idStatusOrder" />
+                <ScalarProperty Name="nameStatusOrder" ColumnName="nameStatusOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="storage">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.storage">
+              <MappingFragment StoreEntitySet="storage">
+                <ScalarProperty Name="idStorage" ColumnName="idStorage" />
+                <ScalarProperty Name="idUserStorage" ColumnName="idUserStorage" />
+                <ScalarProperty Name="sizeStorage" ColumnName="sizeStorage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="typeProblem">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.typeProblem">
+              <MappingFragment StoreEntitySet="typeProblem">
+                <ScalarProperty Name="idTypeProblem" ColumnName="idTypeProblem" />
+                <ScalarProperty Name="idLineProblem" ColumnName="idLineProblem" />
+                <ScalarProperty Name="nameTypeProblem" ColumnName="nameTypeProblem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="loginUser" ColumnName="loginUser" />
+                <ScalarProperty Name="passwordUser" ColumnName="passwordUser" />
+                <ScalarProperty Name="fullNameUser" ColumnName="fullNameUser" />
+                <ScalarProperty Name="dateBirth" ColumnName="dateBirth" />
+                <ScalarProperty Name="emailUser" ColumnName="emailUser" />
+                <ScalarProperty Name="phoneUser" ColumnName="phoneUser" />
+                <ScalarProperty Name="idRoleUser" ColumnName="idRoleUser" />
+                <ScalarProperty Name="countryUser" ColumnName="countryUser" />
+                <ScalarProperty Name="cityUser" ColumnName="cityUser" />
+                <ScalarProperty Name="sexUser" ColumnName="sexUser" />
+                <ScalarProperty Name="urlPhoto" ColumnName="urlPhoto" />
+                <ScalarProperty Name="verificationUser" ColumnName="verificationUser" />
+                <ScalarProperty Name="lineWorking" ColumnName="lineWorking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="verification">
+            <EntityTypeMapping TypeName="personalRoomPsyModel.verification">
+              <MappingFragment StoreEntitySet="verification">
+                <ScalarProperty Name="idVerification" ColumnName="idVerification" />
+                <ScalarProperty Name="nameVerification" ColumnName="nameVerification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

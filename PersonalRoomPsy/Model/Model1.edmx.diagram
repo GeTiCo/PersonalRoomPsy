@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d23549737b8249b9b5f605aef0486a10" Name="Diagram1">
+        <EntityTypeShape EntityType="personalRoomPsyModel.city" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.contacts" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.country" Width="1.5" PointX="1.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.file" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.folder" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.historyOrder" Width="1.5" PointX="8.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.lineProblem" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.messageProblem" Width="1.5" PointX="5.25" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.order" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.role" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.statusOrder" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.storage" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.typeProblem" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.user" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="personalRoomPsyModel.verification" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_city_country" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_user_city" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_contacts_user" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_user_country" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_file_folder" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_folder_user" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_historyOrder_statusOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_historyOrder_user" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_order_lineProblem" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_typeProblem_lineProblem" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_user_lineProblem" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_messageProblem_user" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_order_statusOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_order_typeProblem" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_order_user" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_user_role" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_storage_user" ManuallyRouted="false" />
+        <AssociationConnector Association="personalRoomPsyModel.FK_user_verification" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

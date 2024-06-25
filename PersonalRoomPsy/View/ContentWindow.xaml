@@ -1,0 +1,16 @@
+﻿<mah:MetroWindow x:Class="PersonalRoomPsy.View.ContentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonalRoomPsy.View"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Личный кабинет психолога" Height="900" Width="1600">
+    <Grid>
+        <Frame Name="mainContentFrame">
+
+        </Frame>
+    </Grid>
+</mah:MetroWindow>
